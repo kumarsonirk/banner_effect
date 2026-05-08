@@ -26,20 +26,17 @@ const App = () => {
       onMouseLeave={() => setIsHovering(false)}
       onClick={handleClick}
     >
-      {/* Banner 1 */}
-      <div
-        className="absolute inset-0"
-        style={{ opacity: isRevealed ? 0 : 1, transition: 'opacity 0.9s ease-in-out' }}
-      >
-        <img src={BANNER1_URL} alt="Banner 1" className="w-full h-full object-cover" />
+      {/* Banner 2 — always underneath */}
+      <div className="absolute inset-0">
+        <img src={BANNER2_URL} alt="Banner 2" className="w-full h-full object-cover" />
       </div>
 
-      {/* Banner 2 */}
+      {/* Banner 1 — on top, fades out on click */}
       <div
         className="absolute inset-0"
-        style={{ opacity: isRevealed ? 1 : 0, transition: 'opacity 0.3s ease-in-out' }}
+        style={{ opacity: isRevealed ? 0 : 1, transition: 'opacity 1.5s ease-in-out' }}
       >
-        <img src={BANNER2_URL} alt="Banner 2" className="w-full h-full object-cover" />
+        <img src={BANNER1_URL} alt="Banner 1" className="w-full h-full object-cover" />
       </div>
 
       {/* Cursor */}
@@ -52,7 +49,7 @@ const App = () => {
           width: isRevealed ? '30px' : '110px',
           height: isRevealed ? '30px' : '110px',
           background: 'rgba(0, 0, 0, 0.55)',
-          backdropFilter: 'blur(6px)',
+          backdropFilter: 'blur(1px)',
           border: '2px solid rgba(255,255,255,0.85)',
           transition: 'width 0.4s ease, height 0.4s ease, opacity 0.3s',
         }}
