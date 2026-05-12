@@ -26,6 +26,11 @@ const App = () => {
       onMouseLeave={() => setIsHovering(false)}
       onClick={handleClick}
     >
+      {/* Logo — top left */}
+      <div className="absolute top-12 left-24 z-20 pointer-events-none">
+        <img src="/logo.svg" alt="Logo" className="h-10 w-auto" />
+      </div>
+
       {/* Banner 2 — always underneath */}
       <div className="absolute inset-0">
         <img src={BANNER2_URL} alt="Banner 2" className="w-full h-full object-cover" />
@@ -41,7 +46,7 @@ const App = () => {
 
       {/* Pre-reveal title text */}
       <div
-        className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-36 pointer-events-none"
+        className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-36 px-8 pointer-events-none"
         style={{ opacity: isRevealed ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}
       >
         <span
@@ -58,7 +63,7 @@ const App = () => {
 
       {/* Post-reveal title text */}
       <div
-        className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-40 pointer-events-none"
+        className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-40 px-8 pointer-events-none"
         style={{ opacity: isRevealed ? 1 : 0, transition: 'opacity 1.5s ease-in-out', transitionDelay: isRevealed ? '3s' : '0.5s' }}
       >
         <span
