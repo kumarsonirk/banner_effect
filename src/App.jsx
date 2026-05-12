@@ -34,9 +34,43 @@ const App = () => {
       {/* Banner 1 — on top, fades out on click */}
       <div
         className="absolute inset-0"
-        style={{ opacity: isRevealed ? 0 : 1, transition: 'opacity 1.5s ease-in-out' }}
+        style={{ opacity: isRevealed ? 0 : 1, transition: 'opacity 3s ease-in-out' }}
       >
         <img src={BANNER1_URL} alt="Banner 1" className="w-full h-full object-cover" />
+      </div>
+
+      {/* Pre-reveal title text */}
+      <div
+        className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-36 pointer-events-none"
+        style={{ opacity: isRevealed ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}
+      >
+        <span
+          style={{
+            fontFamily: "Playfair Display",
+            fontSize: '56px',
+            fontWeight: 800,
+            letterSpacing: '0.08em',
+          }}
+        >
+          <span style={{ color: '#85523F' }}>The Canv</span><span style={{ color: 'transparent', WebkitTextStroke: '1.5px #85523F' }}>as</span>
+        </span>
+      </div>
+
+      {/* Post-reveal title text */}
+      <div
+        className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-40 pointer-events-none"
+        style={{ opacity: isRevealed ? 1 : 0, transition: 'opacity 1.5s ease-in-out', transitionDelay: isRevealed ? '3s' : '0.5s' }}
+      >
+        <span
+          style={{
+            fontFamily: "Playfair Display",
+            fontSize: '56px',
+            letterSpacing: '0.08em',
+            fontWeight: 800,
+          }}
+        >
+          <span style={{ color: '#85523F' }}>The Masterpie</span><span style={{ color: 'transparent', WebkitTextStroke: '1.5px #85523F' }}>ce</span>
+        </span>
       </div>
 
       {/* Cursor */}
