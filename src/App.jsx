@@ -7,11 +7,17 @@ const App = () => {
   const [isRevealed, setIsRevealed] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     const onMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', onMove);
     return () => window.removeEventListener('mousemove', onMove);
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => setIsMounted(true), 100);
+    return () => clearTimeout(t);
   }, []);
 
   const handleClick = useCallback(() => {
@@ -47,7 +53,7 @@ const App = () => {
       {/* Pre-reveal title text */}
       <div
         className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-36 px-8 pointer-events-none"
-        style={{ opacity: isRevealed ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}
+        style={{ opacity: isRevealed ? 0 : isMounted ? 1 : 0, transition: 'opacity 1.2s ease-in-out' }}
       >
         <span
           style={{
